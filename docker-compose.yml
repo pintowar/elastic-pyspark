@@ -1,0 +1,18 @@
+version: "2"
+services:
+
+  pyspark:
+    build: ./images/pyspark
+    ports:
+      - "8888:8888"
+    volumes:
+     - ./nbs:/usr/share/notebooks
+    depends_on:
+     - vector-elastic
+
+  vector-elastic:
+    build: ./images/vector-elastic
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
